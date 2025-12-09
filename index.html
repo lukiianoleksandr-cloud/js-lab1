@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<title>Практична робота_01-JS02</title>
+<style>
+    #reset-button { 
+        margin-top: 10px;
+    }
+</style>
+</head>
+<body>
+Сторінка привітання <br>
+"Hello WORLD"<br>
+<button id="greet-button" value="Кнопка вітання">Привітати СВІТ</button>
+<button id="reset-button" style="display:none;">Видалити H1 та Відновити</button>
+
+<script>
+"use strict";
+
+var greetButton = document.getElementById('greet-button');
+var resetButton = document.getElementById('reset-button');
+
+greetButton.onclick = greetFunction;
+
+function greetFunction() {
+
+    greetButton.style.display = "none";
+
+    var h1 = document.createElement('h1');
+    h1.className = "big";
+    h1.id = "big";
+    document.body.appendChild(h1);
+    h1.appendChild(document.createTextNode("Я ВІТАЮ ТЕБЕ СВІТ!!!"));
+    
+    document.getElementsByTagName("h1")[0].style.color = "red";
+    document.getElementById("big").style.fontSize = "4em";
+    document.getElementById("big").style.textAlign = "center";
+    
+    resetButton.style.display = "block";
+}
+
+resetButton.onclick = resetFunction;
+
+function resetFunction() {
+    var h1_to_remove = document.getElementById('big');
+    if (h1_to_remove) {
+        h1_to_remove.remove(); 
+    }
+    
+    greetButton.style.display = "block";
+    
+    resetButton.style.display = "none";
+}
+</script>
+</body>
+</html>
